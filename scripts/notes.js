@@ -83,13 +83,15 @@ export const addNewItem = (item) => {
 };
 
 export const editItem = (id, name, content, category, dates) => {
+  let isActive = true;
   notesList = notesList.map((el) => {
     if (el.id === id) {
+      isActive = el.isActive;
       return { ...el, name, content, category, dates };
     } else {
       return el;
     }
   });
-
-  updateStatus(true);
+  
+  updateStatus(isActive);
 };
