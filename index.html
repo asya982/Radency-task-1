@@ -35,6 +35,12 @@
     </header>
 
     <div id="app-container">
+      <nav>
+        <ul class="nav nav-tabs">
+          <li class="nav-item nav-link active" id="active">Active</li>
+          <li class="nav-item nav-link" id="archived">Archived</li>
+        </ul>
+      </nav>
       <section class="main-items">
         <table class="table table-hover">
           <thead>
@@ -78,6 +84,8 @@
           type="button"
           class="btn btn-outline-primary btn-md"
           id="create-note"
+          data-bs-toggle="modal"
+          data-bs-target="#formModal"
         >
           Create note
         </button>
@@ -137,8 +145,7 @@
               </div>
               <div class="form-element">
                 <label for="category">Category</label>
-                <select name="category" id="category">
-                </select>
+                <select name="category" id="category"></select>
               </div>
               <div class="form-element">
                 <label for="content">Content</label>
@@ -159,7 +166,12 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-outline-primary btn-md" id="submit-form">
+              <button
+                type="submit"
+                class="btn btn-outline-primary btn-md"
+                id="submit-form"
+                data-bs-dismiss="modal"
+              >
                 Save changes
               </button>
             </div>

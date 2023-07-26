@@ -42,6 +42,26 @@ textarea {
   resize: none !important;
 }
 
+input, textarea, select {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+
+label{
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+li {
+  cursor: pointer;
+  color: var(--primary) !important;
+}
+
+.active {
+  color: var(--dark) !important;
+}
+
 .title {
   font-family: "Amatic SC", cursive;
   color: var(--primary);
@@ -84,16 +104,15 @@ textarea {
   gap: 15px;
 }
 
-
-input, textarea, select {
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
+.content, .dates { 
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-label{
-  color: var(--secondary);
-  font-weight: bold;
+.dates {
+  text-align: center;
 }
 
 .modal-header {

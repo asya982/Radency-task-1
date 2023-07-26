@@ -1,28 +1,26 @@
-import { handleSubmit } from "./components/ModalForm.js";
 import { findDates, publishDate } from "./helpers.js";
 import { addNewItem, editItem, notesList } from "./notes.js";
 
-export default function submitForm(isCreate, noteId, noteStatus) {
-  const content = document.getElementById("content").value;
+export default function submitForm(id, name, content, category) {
+  const noteId = Number(id);
+  const isCreate = isNaN(id);
+  
   const data = {
     id: isCreate ? notesList.length : noteId,
-    name: document.getElementById("name").value,
+    name,
     created: publishDate(),
-    category: document.getElementById("category").value,
-    content: content,
+    category,
+    content,
     dates: findDates(content),
-    isActive: noteStatus,
+    isActive: true,
   };
 
   try {
     if (isCreate) {
       addNewItem(data);
     } else {
-      editItem(data);
+      editItem(noteId, name, content, category, data.dates);
     }
-    document
-      .getElementById("submit-form")
-      .removeEventListener("click", handleSubmit);
   } catch (error) {
     console.log(error);
   }

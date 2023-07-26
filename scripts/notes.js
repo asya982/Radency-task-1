@@ -1,4 +1,4 @@
-import { renderCategoryTable, renderNotesTable } from "./renderTable.js";
+import { updateStatus } from "./renderTable.js";
 
 export let notesList = [
   {
@@ -42,8 +42,8 @@ export let notesList = [
     name: "Project Deadline",
     created: "25/07/2023",
     category: 1,
-    content: "Finish the report and submit it by Friday.",
-    dates: ["10/08/2023", "26/07/2023"],
+    content: "Finish the report and submit it by Friday(10/08/2023)",
+    dates: ["10/08/2023"],
     isActive: true,
   },
   {
@@ -51,7 +51,7 @@ export let notesList = [
     name: "Travel Plans",
     created: "25/07/2023",
     category: 1,
-    content: "Research and plan for the summer vacation.",
+    content: "Research and plan for the summer vacation during 10/08/2023 26/07/2023",
     dates: ["10/08/2023", "26/07/2023"],
     isActive: true,
   },
@@ -68,29 +68,28 @@ export let notesList = [
 
 export const deleteItem = (itemId) => {
   notesList = notesList.filter((note) => note.id !== itemId);
-  renderNotesTable(true);
+  updateStatus(true);
 };
 
-export const archiveItem = (itemId) => {
+export const archiveItem = (itemId, status) => {
   const currentElement = notesList.find((el) => el.id === itemId);
-  currentElement.isActive = !currentElement.isActive;
-  renderNotesTable(true);
-  renderCategoryTable();
+  currentElement.isActive = status;
+  updateStatus(!status);
 };
 
 export const addNewItem = (item) => {
   notesList = [item, ...notesList];
-  renderNotesTable(true);
+  updateStatus(true);
 };
 
-export const editItem = (item) => {
+export const editItem = (id, name, content, category, dates) => {
   notesList = notesList.map((el) => {
-    if (el.id === item.id) {
-      return item;
+    if (el.id === id) {
+      return { ...el, name, content, category, dates };
     } else {
       return el;
     }
   });
 
-  renderNotesTable(true);
+  updateStatus(true);
 };

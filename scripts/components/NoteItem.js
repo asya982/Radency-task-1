@@ -8,6 +8,7 @@ export default class NoteItem {
 
     Object.keys(item).forEach((key) => {
       const tableData = document.createElement("td");
+      tableData.classList.add(key);
       switch (key) {
         case "name":
           const itemCategory = categories[item.category];
@@ -16,6 +17,11 @@ export default class NoteItem {
 
         case "category":
           tableData.innerHTML = categories[item[key]].title;
+          this.el.appendChild(tableData);
+          return;
+
+        case "dates":
+          tableData.innerText = item.dates.join(" ");
           this.el.appendChild(tableData);
           return;
 
@@ -31,7 +37,7 @@ export default class NoteItem {
       this.el.appendChild(tableData);
     });
 
-    const controlls = new ControlButtons(item.id);
+    const controlls = new ControlButtons(item.id, item.isActive);
     this.el.appendChild(controlls.controllArea);
   }
 }

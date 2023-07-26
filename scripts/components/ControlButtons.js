@@ -2,15 +2,21 @@ import { archiveItem, deleteItem } from "../notes.js";
 import ModalForm from "./ModalForm.js";
 
 export default class ControlButtons {
-  constructor(itemId) {
+  constructor(itemId, isActive) {
     this.controllArea = document.createElement("td");
     this.archiveBtn = createButton('<i class="bi bi-archive"></i>', () =>
-      archiveItem(itemId)
+      archiveItem(itemId, false)
+    );
+
+    this.activateBtn = createButton(
+      ' <i class="bi bi-layer-forward"></i>',
+      () => archiveItem(itemId, true)
     );
     this.deleteBtn = createButton('<i class="bi bi-trash2"></i>', () =>
       deleteItem(itemId)
     );
     this.editBtn = createButton('<i class="bi bi-pen"></i>', () => {
+      document.querySelector("form").id = itemId;
       ModalForm(false, itemId);
     });
 
@@ -18,9 +24,10 @@ export default class ControlButtons {
     this.editBtn.setAttribute("data-bs-target", "#formModal");
 
     this.controllArea.appendChild(this.editBtn);
-    this.controllArea.appendChild(this.archiveBtn);
+    this.controllArea.appendChild(
+      isActive ? this.archiveBtn : this.activateBtn
+    );
     this.controllArea.appendChild(this.deleteBtn);
-
   }
 }
 

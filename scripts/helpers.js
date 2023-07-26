@@ -8,6 +8,6 @@ export const publishDate = () => {
 };
 
 export const findDates = (inputText) => {
-  const dates = [];
-  return dates;
+  const regEx = /\b\d{2}\/\d{2}\/\d{4}\b/g;
+  return inputText.match(regEx) || [];
 };

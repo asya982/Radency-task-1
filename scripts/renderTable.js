@@ -15,14 +15,17 @@ export function renderNotesTable(isActive) {
     });
 }
 
-
 export function renderCategoryTable() {
   const table = document.getElementById("grouped-items-list");
   table.innerHTML = "";
-  
+
   categories.forEach((category) => {
     const categoryItem = new CategoryItem(category.id);
     table.appendChild(categoryItem.el);
   });
 }
 
+export const updateStatus = (isActive) => {
+  renderNotesTable(isActive);
+  renderCategoryTable();
+};
