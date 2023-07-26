@@ -51,7 +51,8 @@ export let notesList = [
     name: "Travel Plans",
     created: "25/07/2023",
     category: 1,
-    content: "Research and plan for the summer vacation during 10/08/2023 26/07/2023",
+    content:
+      "Research and plan for the summer vacation during 10/08/2023 26/07/2023",
     dates: ["10/08/2023", "26/07/2023"],
     isActive: true,
   },
@@ -83,13 +84,15 @@ export const addNewItem = (item) => {
 };
 
 export const editItem = (id, name, content, category, dates) => {
+  let isActive = true;
   notesList = notesList.map((el) => {
     if (el.id === id) {
+      isActive = el.isActive;
       return { ...el, name, content, category, dates };
     } else {
       return el;
     }
   });
-
-  updateStatus(true);
+  
+  updateStatus(isActive);
 };
