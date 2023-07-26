@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cutive+Mono&display=swap");
+
+* {
+  --primary: #bb4430;
+  --secondary: #7ebdc2;
+  --dark: #231f20;
+  --light: #fffef6;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Cutive Mono", monospace;
+  color: var(--dark);
+}
+
+html {
+  background-color: var(--light);
+}
+
+body {
+    margin: 15px;
+}
+
+header {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+header svg {
+    width: 40px;
+    height: 30px;   
+}
+
+th,
+th svg {
+  color: var(--primary) !important;
+  fill: var(--primary);
+}
+
+textarea {
+  resize: none !important;
+}
+
+.title {
+  font-family: "Amatic SC", cursive;
+  color: var(--primary);
+}
+
+#app-container {
+  margin: 30px 40px;
+}
+
+.main-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.main-table th {
+  text-align: center;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  align-self: flex-end;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--light) !important;
+}
+
+.item-icon{
+    width: 20px;
+    margin: 0 5px;
+}
+
+.modal-body, .form-element  {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+input, textarea, select {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+}
+
+label{
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.modal-header {
+  background-color: var(--secondary);
+  color: var(--light) !important;
+}
