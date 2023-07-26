@@ -1,7 +1,7 @@
 import { categories } from "../static/categories.js";
 import CategoryItem from "./components/CategoryItem.js";
 import { notesList } from "./notes.js";
-import NoteItem from "./components/noteItem.js";
+import NoteItem from "./components/NoteItem.js";
 
 export function renderNotesTable(isActive) {
   const list = document.querySelector("#active-notes-list");
